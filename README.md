@@ -17,11 +17,21 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 
 ## Installation
 
+### Push to Github Repository
+ ```bash
+    git remote add origin https://github.com/adamsetiaji/server_surfebe.git
+
+    git add .
+    git commit -m "Initial commit: Add Logo"
+    git push -u origin master --force
+   ```
+---
+
 ### Local Development
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/adamsetiaji/server_surfebe.git
    cd surfebeserver
    ```
 
@@ -36,14 +46,48 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
    DB_HOST=localhost
    DB_USER=root
    DB_PASSWORD=password
-   DB_NAME=surfebe
+   DB_NAME=surfebeserver
    ```
 
 4. **Run the server:**
    ```bash
    npm start
    ```
+---
 
+### Local Development (Using Docker)
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/adamsetiaji/server_surfebe.git
+   cd surfebeserver
+   ```
+
+2. **Set up environment variables:**  
+   Create a `.env` file and configure your MySQL database settings:
+   ```env
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=password
+   DB_NAME=surfebeserver
+   ```
+
+3. **Run the server docker:**
+   ```bash
+   docker-compose up --build
+   ```
+
+4. **Build Docker Image Local:**
+   ```bash
+   docker-compose build
+   ```
+---
+### Tag and Push Docker Image to Docker Hub
+ ```bash
+    docker tag surfebeserver-backend adamsetiaji/surfebeserver-backend:latest
+    docker push adamsetiaji/surfebeserver-backend:latest
+
+   ```
 ---
 
 ## WebSocket API Usage
@@ -158,9 +202,3 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
     "siteKey": "6LdAbc123"
 }
 ```
-
----
-
-## License
-
-This project is licensed under the **MIT License**.
