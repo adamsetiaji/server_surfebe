@@ -43,6 +43,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 3. **Set up environment variables:**  
    Create a `.env` file and configure your MySQL database settings:
    ```env
+   PORT=3000
    DB_HOST=localhost
    DB_USER=root
    DB_PASSWORD=password
