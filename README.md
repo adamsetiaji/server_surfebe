@@ -84,8 +84,8 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 ---
 ### Tag and Push Docker Image to Docker Hub
  ```bash
-    docker tag surfebeserver-backend adamsetiaji/surfebeserver-backend:latest
-    docker push adamsetiaji/surfebeserver-backend:latest
+    docker tag surfebeserver adamsetiaji/surfebeserver:latest
+    docker push adamsetiaji/surfebeserver:latest
 
    ```
 ---
