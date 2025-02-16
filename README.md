@@ -203,3 +203,65 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
     "siteKey": "6LdAbc123"
 }
 ```
+
+---
+
+### Surfebe Management
+
+#### register Surfebe
+```json
+{
+    "type": "SURFEBE",
+    "action": "REGISTER_SURFEBE",
+    "email": "john@example.com"
+}
+```
+
+#### Login Surfebe
+```json
+{
+    "type": "SURFEBE",
+    "action": "LOGIN_SURFEBE",
+    "email": "john@example.com"
+}
+```
+
+#### Confirm Captcha Surfebe
+```json
+{
+    "type": "SURFEBE",
+    "action": "CONFIRM_CAPTCHA",
+    "email": "john@example.com"
+}
+```
+
+#### Get Profile Surfebe
+```json
+{
+    "type": "SURFEBE",
+    "action": "PROFILE_SURFEBE",
+    "email": "john@example.com"
+}
+```
+
+#### Get Tasks
+```json
+{
+	"type": "SURFEBE",
+	"action": "GET_TASKS",
+	"version": "182",
+	"email": "example@gmail.com"
+}
+```
+
+#### Complete Visit
+```json
+{
+	"type": "SURFEBE",
+	"action": "COMPLETE_VISIT",
+	"version": "182",
+	"email": "example@gmail.com",
+	"taskKey": "crgrtghrthrth=="
+	
+}
+```

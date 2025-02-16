@@ -136,6 +136,25 @@ exports.deleteRecaptcha = async (ws, siteKey) => {
   }
 };
 
+exports.getRecaptchaBySiteKey = async (siteKey) => {
+  try {
+    const recaptcha = await Recaptcha.findBySiteKey(siteKey);
+    if (!recaptcha) {
+      return { success: false, error: 'Recaptcha not found' };
+    }
+
+    if (recaptcha.status_g_response === false) {
+      return { success: false, error: 'Recaptcha false, Please Waiting' };
+    }
+    if (recaptcha.status_g_response === true) {
+      return { success: true, data: recaptcha };
+    }
+    
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+};
+
 // Add method to get recaptcha by site key
 exports.getRecaptcha = async (ws, siteKey) => {
   try {

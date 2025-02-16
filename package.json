@@ -11,7 +11,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "jsdom": "^26.0.0",
     "mysql2": "^3.9.1",
+    "speakeasy": "^2.0.0",
     "ws": "^8.16.0"
   },
   "devDependencies": {

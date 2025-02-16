@@ -36,6 +36,19 @@ exports.getAllUsers = async (ws) => {
   }
 };
 
+exports.findUserByEmail = async (email) => {
+  try {
+    const user = await User.findByEmail(email);
+    if (!user) {
+      return { success: false, error: 'User not found' };
+    }
+    return { success: true, data: user };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+};
+
+
 exports.getUserByEmail = async (ws, email) => {
   try {
     const user = await User.findByEmail(email);
