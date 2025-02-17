@@ -27,6 +27,16 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
    ```
 ---
 
+### Pull from Github Repository
+ ```bash
+    git remote add origin https://github.com/adamsetiaji/server_surfebe.git
+
+    git pull origin master
+   ```
+---
+
+
+
 ### Local Development
 
 1. **Clone the repository:**
