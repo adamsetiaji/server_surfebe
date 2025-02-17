@@ -135,6 +135,59 @@ exports.loginSurfebe = async (ws, email, siteKey) => {
     }
 };
 
+exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
+    try {
+        // Get user data
+        const userData = await findUserByEmail(email);
+        if (!userData.success) {
+            return sendWSResponse(ws, {
+                success: false,
+                error: 'Failed to get user data'
+            });
+        }
+
+        // Get recaptcha g_response
+        const recaptchaResponse = await recaptchaController.getRecaptchaBySiteKey(siteKey);
+        if (!recaptchaResponse.success) {
+            return sendWSResponse(ws, recaptchaResponse);
+        }
+
+        const formData = new FormData();
+        formData.append('g-recaptcha-response', recaptchaResponse.data.g_response);
+
+        const response = await fetch("https://surfe.be/ext/h-captcha", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Cookie": userData.data.cookieSurfebe
+            },
+            body: formData
+        });
+
+        const data = await response.text(); // Gunakan text() karena response bisa berupa HTML
+
+        // Check if response includes success message
+        if (data.includes("This window can be closed")) {
+            sendWSResponse(ws, {
+                success: true,
+                message: "Captcha confirmed successfully"
+            });
+        } else {
+            sendWSResponse(ws, {
+                success: false,
+                error: "Failed to confirm captcha"
+            });
+        }
+
+    } catch (err) {
+        sendWSResponse(ws, {
+            success: false,
+            error: err.message
+        });
+    }
+};
+
+
 
 exports.getProfileSurfebe = async (ws, email) => {
     try {

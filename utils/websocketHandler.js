@@ -77,11 +77,11 @@ const websocketHandler = (ws) => {
               await surfebeController.loginSurfebe(ws, email, siteKey);
               break;
 
-            // case 'CONFIRM_CAPTCHA_SURFEBE':
-            //   await surfebeController.confirmCaptchaSurfebe(ws, email, siteKey);
-            //   break;
+            case 'CONFIRM_CAPTCHA_SURFEBE':
+              await surfebeController.confirmCaptchaSurfebe(ws, email, siteKey);
+              break;
 
-            case 'PROFILE_SURFEBE':
+            case 'PROFILE_SURFEBE': nmn,
               await surfebeController.getProfileSurfebe(ws, email);
               break;            
 

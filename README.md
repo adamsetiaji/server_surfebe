@@ -22,7 +22,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
     git remote add origin https://github.com/adamsetiaji/server_surfebe.git
 
     git add .
-    git commit -m "Initial commit: Add Logo"
+    git commit -m "Initial commit: Add Update surfebeController"
     git push -u origin master --force
    ```
 ---
@@ -213,7 +213,8 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 {
     "type": "SURFEBE",
     "action": "REGISTER_SURFEBE",
-    "email": "john@example.com"
+    "email": "john@example.com",
+    "siteKey": "6LdAbc123"
 }
 ```
 
@@ -222,7 +223,8 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 {
     "type": "SURFEBE",
     "action": "LOGIN_SURFEBE",
-    "email": "john@example.com"
+    "email": "john@example.com",
+    "siteKey": "6LdAbc123"
 }
 ```
 
@@ -231,7 +233,8 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 {
     "type": "SURFEBE",
     "action": "CONFIRM_CAPTCHA",
-    "email": "john@example.com"
+    "email": "john@example.com",
+    "siteKey": "6LdAbc123"
 }
 ```
 

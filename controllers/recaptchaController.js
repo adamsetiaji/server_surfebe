@@ -1,20 +1,5 @@
-const Recaptcha = require('../models/Recaptcha');
-const { validateRecaptcha } = require('../utils/validation');
-
-// Helper function to send WebSocket response
-const sendWSResponse = (ws, data) => {
-  ws.send(JSON.stringify(data));
-};
-
-// Helper function for error handling
-const handleError = (ws, error) => {
-  console.error('Recaptcha Controller Error:', error);
-  sendWSResponse(ws, {
-    success: false,
-    error: error.message || 'An unexpected error occurred'
-  });
-};
-
+// controllers/recaptchaController.js
+const Recaptcha = require('../models/Recaptcha'); 
 exports.createRecaptcha = async (ws, data) => {
   try {
     // Validate input data
