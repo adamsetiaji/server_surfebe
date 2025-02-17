@@ -1,13 +1,30 @@
 // controllers/recaptchaController.js
-const Recaptcha = require('../models/Recaptcha'); 
+const Recaptcha = require('../models/Recaptcha');
+const axios = require('axios');
+const { validateRecaptcha } = require('../utils/validation');
+
+const sendWSResponse = (ws, response) => {
+  ws.send(JSON.stringify(response));
+};
+
+const handleError = (ws, error) => {
+  console.error('Error:', error);
+  sendWSResponse(ws, {
+    success: false,
+    error: error.message || 'An error occurred'
+  });
+};
+
+
+
 exports.createRecaptcha = async (ws, data) => {
   try {
     // Validate input data
     const validationError = validateRecaptcha(data);
     if (validationError) {
-      return sendWSResponse(ws, { 
+      return sendWSResponse(ws, {
         success: false,
-        error: validationError 
+        error: validationError
       });
     }
 
@@ -31,10 +48,10 @@ exports.createRecaptcha = async (ws, data) => {
 
     await Recaptcha.create(sanitizedData);
     const created = await Recaptcha.findBySiteKey(data.site_key);
-    
-    sendWSResponse(ws, { 
-      success: true, 
-      data: created 
+
+    sendWSResponse(ws, {
+      success: true,
+      data: created
     });
   } catch (err) {
     handleError(ws, err);
@@ -76,13 +93,13 @@ exports.updateRecaptcha = async (ws, siteKey, data) => {
     };
 
     // Remove any undefined or null values
-    Object.keys(updatedData).forEach(key => 
+    Object.keys(updatedData).forEach(key =>
       (updatedData[key] === undefined || updatedData[key] === null) && delete updatedData[key]
     );
 
     await Recaptcha.updateBySiteKey(siteKey, updatedData);
     const updated = await Recaptcha.findBySiteKey(siteKey);
-    
+
     sendWSResponse(ws, {
       success: true,
       data: updated
@@ -111,7 +128,7 @@ exports.deleteRecaptcha = async (ws, siteKey) => {
     }
 
     await Recaptcha.deleteBySiteKey(siteKey);
-    
+
     sendWSResponse(ws, {
       success: true,
       message: 'Recaptcha deleted successfully'
@@ -134,11 +151,22 @@ exports.getRecaptchaBySiteKey = async (siteKey) => {
     if (recaptcha.status_g_response === true) {
       return { success: true, data: recaptcha };
     }
-    
+
   } catch (err) {
     return { success: false, error: err.message };
   }
 };
+
+exports.getAllRecaptchas = async (ws) => {
+  try {
+    const recaptcha = await Recaptcha.findAll();
+    ws.send(JSON.stringify({ success: true, data: recaptcha }));
+  } catch (err) {
+    ws.send(JSON.stringify({ error: err.message }));
+  }
+};
+
+
 
 // Add method to get recaptcha by site key
 exports.getRecaptcha = async (ws, siteKey) => {
@@ -162,6 +190,128 @@ exports.getRecaptcha = async (ws, siteKey) => {
       success: true,
       data: recaptcha
     });
+  } catch (err) {
+    handleError(ws, err);
+  }
+};
+
+async function updateTokenRecaptcha(ws, g_response) {
+  if (!g_response) {
+    return { success: false, error: 'g_response is required' };
+  }
+
+  // Get existing recaptcha data first
+  const existing = await Recaptcha.findBySiteKey(process.env.SITEKEY);
+  if (!existing) {
+    return { success: false, error: 'Recaptcha not found' };
+  }
+
+  const updateData = {
+    ...existing, // Keep all existing data
+    g_response: g_response,
+    status_g_response: 1,
+    time_g_response: "00:01:40",
+    site: existing.site // Keep existing site
+  };
+
+  try {
+    console.log('Updating with data:', updateData);
+    
+    await Recaptcha.updateBySiteKey(process.env.SITEKEY, updateData);
+    return { success: true, data: updateData };
+  } catch (err) {
+    console.error('Update error:', err);
+    return { success: false, error: err.message };
+  }
+}
+
+
+exports.getRecaptchaToken = async (ws) => {
+  try {
+    // Create task request
+    const createTaskResponse = await axios.post(process.env.BASE_URL_CREATE_TASK, {
+      clientKey: process.env.RECAPTCHA_CLIENT_KEY
+    });
+
+    if (!createTaskResponse.data.success) {
+      return sendWSResponse(ws, {
+        success: false,
+        error: 'Failed to create recaptcha task'
+      });
+    }
+
+    const taskId = createTaskResponse.data.taskId;
+
+    async function getRecaptchaResult(taskId) {
+      while (true) {
+        const resultResponse = await axios.post(process.env.BASE_URL_GET_TASK_RESULT, {
+          clientKey: process.env.RECAPTCHA_CLIENT_KEY,
+          taskId: taskId
+        });
+
+        const { status, success, solution } = resultResponse.data;
+
+        // If still processing, wait and continue
+        if (status === 'processing') {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          continue;
+        }
+
+        // If completed but no success (false result)
+        if (status === 'completed' && !solution) {
+          // Create a new task and start over
+          const newTaskResponse = await axios.post(process.env.BASE_URL_CREATE_TASK, {
+            clientKey: process.env.RECAPTCHA_CLIENT_KEY
+          });
+          
+          if (!newTaskResponse.data.success) {
+            throw new Error('Failed to create new recaptcha task');
+          }
+          
+          // Recursive call with new taskId
+          return getRecaptchaResult(newTaskResponse.data.taskId);
+        }
+
+        // If we have a valid result
+        if (status === 'completed' && solution && solution.gRecaptchaResponse) {
+          return resultResponse.data;
+        }
+
+        // If something unexpected happened
+        throw new Error('Unexpected response from recaptcha service');
+      }
+    }
+
+    try {
+      const result = await getRecaptchaResult(taskId);
+
+      // Update token in database
+      const updateResult = await updateTokenRecaptcha(ws, result.solution.gRecaptchaResponse);
+      
+      if (!updateResult.success) {
+        return sendWSResponse(ws, {
+          success: false,
+          error: 'Failed to update recaptcha status in database',
+          message: updateResult.error
+        });
+      }
+
+      return sendWSResponse(ws, {
+        success: true,
+        message: "Database Recaptcha Updated",
+        data: {
+          updateData: updateResult.data,
+          timestamp: result.timestamp
+        }
+      });
+
+    } catch (err) {
+      return sendWSResponse(ws, {
+        success: false,
+        error: err.message || 'Failed to get recaptcha token'
+      });
+    }
+
   } catch (err) {
     handleError(ws, err);
   }

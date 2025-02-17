@@ -22,7 +22,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
     git remote add origin https://github.com/adamsetiaji/server_surfebe.git
 
     git add .
-    git commit -m "Initial commit: Add Update surfebeController"
+    git commit -m "Initial commit: Add Update recaptchaController"
     git push -u origin master --force
    ```
 ---
@@ -181,6 +181,14 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 }
 ```
 
+#### Get Token Recaptchas
+```json
+{
+    "type": "RECAPTCHA",
+    "action": "GET_TOKEN"
+}
+```
+
 #### Get Recaptcha by Site Key
 ```json
 {
@@ -275,6 +283,5 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 	"version": "182",
 	"email": "example@gmail.com",
 	"taskKey": "crgrtghrthrth=="
-	
 }
 ```

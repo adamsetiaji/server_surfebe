@@ -41,6 +41,9 @@ const websocketHandler = (ws) => {
             case 'GET_ALL':
               await recaptchaController.getAllRecaptchas(ws);
               break;
+            case 'GET_TOKEN':
+              await recaptchaController.getRecaptchaToken(ws);
+              break;
             case 'GET_BY_SITE_KEY':
               await recaptchaController.getRecaptchaBySiteKey(ws, siteKey);
               break;
@@ -81,9 +84,9 @@ const websocketHandler = (ws) => {
               await surfebeController.confirmCaptchaSurfebe(ws, email, siteKey);
               break;
 
-            case 'PROFILE_SURFEBE': nmn,
+            case 'PROFILE_SURFEBE':
               await surfebeController.getProfileSurfebe(ws, email);
-              break;            
+              break;
 
             case 'GET_TASKS':
               await surfebeController.getTasks(ws, version, email);
