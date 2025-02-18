@@ -1,5 +1,6 @@
 // controllers/surfebeController.js
 const userController = require('./userController');
+const recaptchaController = require('./recaptchaController');
 
 
 const { JSDOM } = require('jsdom');
@@ -135,10 +136,11 @@ exports.loginSurfebe = async (ws, email, siteKey) => {
     }
 };
 
+
 exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
     try {
         // Get user data
-        const userData = await findUserByEmail(email);
+        const userData = await userController.findUserByEmail(email);
         if (!userData.success) {
             return sendWSResponse(ws, {
                 success: false,
@@ -147,26 +149,27 @@ exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
         }
 
         // Get recaptcha g_response
-        const recaptchaResponse = await recaptchaController.getRecaptchaBySiteKey(siteKey);
-        if (!recaptchaResponse.success) {
-            return sendWSResponse(ws, recaptchaResponse);
+        const recaptchaData = await recaptchaController.getRecaptchaBySiteKey(siteKey);
+        if (!recaptchaData || !recaptchaData.success) {
+            return sendWSResponse(ws, {
+                success: false,
+                error: recaptchaData?.error || 'Failed to get recaptcha data'
+            });
         }
-
-        const formData = new FormData();
-        formData.append('g-recaptcha-response', recaptchaResponse.data.g_response);
 
         const response = await fetch("https://surfe.be/ext/h-captcha", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
+                "User-Agent": "insomnia/10.3.1",
                 "Cookie": userData.data.cookieSurfebe
             },
-            body: formData
+            body: `g-recaptcha-response=${encodeURIComponent(recaptchaData.data.g_response)}`
         });
 
-        const data = await response.text(); // Gunakan text() karena response bisa berupa HTML
+        const data = await response.text();
+        console.log('Response data:', data);
 
-        // Check if response includes success message
         if (data.includes("This window can be closed")) {
             sendWSResponse(ws, {
                 success: true,
@@ -175,19 +178,19 @@ exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
         } else {
             sendWSResponse(ws, {
                 success: false,
-                error: "Failed to confirm captcha"
+                error: "Failed to confirm captcha",
+                details: data
             });
         }
 
     } catch (err) {
+        console.error('Error in confirmCaptchaSurfebe:', err);
         sendWSResponse(ws, {
             success: false,
             error: err.message
         });
     }
 };
-
-
 
 exports.getProfileSurfebe = async (ws, email) => {
     try {

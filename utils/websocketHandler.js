@@ -107,6 +107,12 @@ const websocketHandler = (ws) => {
       ws.send(JSON.stringify({ error: error.message }));
     }
   });
+
+  ws.on('close', () => {
+    // Clean up any active timers for this connection
+    recaptchaController.cleanupTimers(ws);
+  });
+
 };
 
 module.exports = websocketHandler;

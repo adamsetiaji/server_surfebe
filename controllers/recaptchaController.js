@@ -2,6 +2,11 @@
 const Recaptcha = require('../models/Recaptcha');
 const axios = require('axios');
 const { validateRecaptcha } = require('../utils/validation');
+const RecaptchaTimer = require('../utils/timerController');
+const timers = new Map();
+
+
+
 
 const sendWSResponse = (ws, response) => {
   ws.send(JSON.stringify(response));
@@ -138,24 +143,44 @@ exports.deleteRecaptcha = async (ws, siteKey) => {
   }
 };
 
+// Di recaptchaController.js
 exports.getRecaptchaBySiteKey = async (siteKey) => {
   try {
-    const recaptcha = await Recaptcha.findBySiteKey(siteKey);
-    if (!recaptcha) {
-      return { success: false, error: 'Recaptcha not found' };
-    }
+      if (!siteKey) {
+          return {
+              success: false,
+              error: 'Site key is required'
+          };
+      }
 
-    if (recaptcha.status_g_response === false) {
-      return { success: false, error: 'Recaptcha false, Please Waiting' };
-    }
-    if (recaptcha.status_g_response === true) {
-      return { success: true, data: recaptcha };
-    }
+      const recaptcha = await Recaptcha.findBySiteKey(siteKey);
+      if (!recaptcha) {
+          return {
+              success: false,
+              error: 'Recaptcha not found'
+          };
+      }
+
+      if (recaptcha.status_g_response === false) {
+          return {
+              success: false,
+              error: 'Recaptcha false, Please Waiting'
+          };
+      }
+
+      return {
+          success: true,
+          data: recaptcha
+      };
 
   } catch (err) {
-    return { success: false, error: err.message };
+      return {
+          success: false,
+          error: err.message
+      };
   }
 };
+
 
 exports.getAllRecaptchas = async (ws) => {
   try {
@@ -200,30 +225,62 @@ async function updateTokenRecaptcha(ws, g_response) {
     return { success: false, error: 'g_response is required' };
   }
 
+  const siteKey = process.env.SITEKEY;
+  
   // Get existing recaptcha data first
-  const existing = await Recaptcha.findBySiteKey(process.env.SITEKEY);
+  const existing = await Recaptcha.findBySiteKey(siteKey);
   if (!existing) {
     return { success: false, error: 'Recaptcha not found' };
   }
 
   const updateData = {
-    ...existing, // Keep all existing data
+    ...existing,
     g_response: g_response,
-    status_g_response: 1,
+    status_g_response: true,
     time_g_response: "00:01:40",
-    site: existing.site // Keep existing site
+    site: existing.site
   };
 
   try {
-    console.log('Updating with data:', updateData);
+    await Recaptcha.updateBySiteKey(siteKey, updateData);
     
-    await Recaptcha.updateBySiteKey(process.env.SITEKEY, updateData);
-    return { success: true, data: updateData };
+    // Stop existing timer if any
+    if (timers.has(siteKey)) {
+      timers.get(siteKey).stop();
+    }
+    
+    // Create and start new timer
+    const timer = new RecaptchaTimer(ws, siteKey);
+    timers.set(siteKey, timer);
+    timer.startTimer("00:01:40");
+    
+    return { 
+      type: 'RECAPTCHA',
+      action: 'UPDATE',
+      success: true, 
+      data: updateData 
+    };
   } catch (err) {
     console.error('Update error:', err);
-    return { success: false, error: err.message };
+    return { 
+      type: 'RECAPTCHA',
+      action: 'UPDATE',
+      success: false, 
+      error: err.message 
+    };
   }
 }
+
+
+function cleanupTimers(ws) {
+  for (const [siteKey, timer] of timers.entries()) {
+    if (timer.ws === ws) {
+      timer.stop();
+      timers.delete(siteKey);
+    }
+  }
+}
+
 
 
 exports.getRecaptchaToken = async (ws) => {
@@ -316,3 +373,7 @@ exports.getRecaptchaToken = async (ws) => {
     handleError(ws, err);
   }
 };
+
+exports.updateTokenRecaptcha = updateTokenRecaptcha;
+exports.cleanupTimers = cleanupTimers;
+
