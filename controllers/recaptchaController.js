@@ -6,8 +6,6 @@ const RecaptchaTimer = require('../utils/timerController');
 const timers = new Map();
 
 
-
-
 const sendWSResponse = (ws, response) => {
   ws.send(JSON.stringify(response));
 };
@@ -20,7 +18,14 @@ const handleError = (ws, error) => {
   });
 };
 
-
+function cleanupTimers(ws) {
+  for (const [siteKey, timer] of timers.entries()) {
+    if (timer.ws === ws) {
+      timer.stop();
+      timers.delete(siteKey);
+    }
+  }
+}
 
 exports.createRecaptcha = async (ws, data) => {
   try {
@@ -63,125 +68,6 @@ exports.createRecaptcha = async (ws, data) => {
   }
 };
 
-exports.updateRecaptcha = async (ws, siteKey, data) => {
-  try {
-    if (!siteKey) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: 'Site key is required'
-      });
-    }
-
-    // Validate update data
-    const validationError = validateRecaptcha(data, true); // true for update mode
-    if (validationError) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: validationError
-      });
-    }
-
-    // Check if recaptcha exists
-    const existing = await Recaptcha.findBySiteKey(siteKey);
-    if (!existing) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: 'Recaptcha not found'
-      });
-    }
-
-    // Prepare update data
-    const updatedData = {
-      ...existing,
-      ...data,
-      updated_at: new Date()
-    };
-
-    // Remove any undefined or null values
-    Object.keys(updatedData).forEach(key =>
-      (updatedData[key] === undefined || updatedData[key] === null) && delete updatedData[key]
-    );
-
-    await Recaptcha.updateBySiteKey(siteKey, updatedData);
-    const updated = await Recaptcha.findBySiteKey(siteKey);
-
-    sendWSResponse(ws, {
-      success: true,
-      data: updated
-    });
-  } catch (err) {
-    handleError(ws, err);
-  }
-};
-
-exports.deleteRecaptcha = async (ws, siteKey) => {
-  try {
-    if (!siteKey) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: 'Site key is required'
-      });
-    }
-
-    // Check if recaptcha exists
-    const existing = await Recaptcha.findBySiteKey(siteKey);
-    if (!existing) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: 'Recaptcha not found'
-      });
-    }
-
-    await Recaptcha.deleteBySiteKey(siteKey);
-
-    sendWSResponse(ws, {
-      success: true,
-      message: 'Recaptcha deleted successfully'
-    });
-  } catch (err) {
-    handleError(ws, err);
-  }
-};
-
-// Di recaptchaController.js
-exports.getRecaptchaBySiteKey = async (siteKey) => {
-  try {
-      if (!siteKey) {
-          return {
-              success: false,
-              error: 'Site key is required'
-          };
-      }
-
-      const recaptcha = await Recaptcha.findBySiteKey(siteKey);
-      if (!recaptcha) {
-          return {
-              success: false,
-              error: 'Recaptcha not found'
-          };
-      }
-
-      if (recaptcha.status_g_response === false) {
-          return {
-              success: false,
-              error: 'Recaptcha false, Please Waiting'
-          };
-      }
-
-      return {
-          success: true,
-          data: recaptcha
-      };
-
-  } catch (err) {
-      return {
-          success: false,
-          error: err.message
-      };
-  }
-};
-
-
 exports.getAllRecaptchas = async (ws) => {
   try {
     const recaptcha = await Recaptcha.findAll();
@@ -191,97 +77,48 @@ exports.getAllRecaptchas = async (ws) => {
   }
 };
 
-
-
-// Add method to get recaptcha by site key
-exports.getRecaptcha = async (ws, siteKey) => {
+exports.getRecaptcha = async (ws) => {
   try {
-    if (!siteKey) {
-      return sendWSResponse(ws, {
-        success: false,
-        error: 'Site key is required'
-      });
-    }
+    const siteKey = process.env.SITEKEY;
 
     const recaptcha = await Recaptcha.findBySiteKey(siteKey);
     if (!recaptcha) {
-      return sendWSResponse(ws, {
+      // Jika ws ada, kirim response melalui WebSocket
+      if (ws) {
+        return sendWSResponse(ws, {
+          success: false,
+          error: 'Recaptcha not found'
+        });
+      }
+      // Jika tidak ada ws, return object response
+      return {
         success: false,
         error: 'Recaptcha not found'
+      };
+    }
+
+    // Jika ws ada, kirim response melalui WebSocket
+    if (ws) {
+      sendWSResponse(ws, {
+        success: true,
+        data: recaptcha
       });
     }
-
-    sendWSResponse(ws, {
+    // Return object response
+    return {
       success: true,
       data: recaptcha
-    });
+    };
   } catch (err) {
-    handleError(ws, err);
+    if (ws) {
+      handleError(ws, err);
+    }
+    return {
+      success: false,
+      error: err.message
+    };
   }
 };
-
-async function updateTokenRecaptcha(ws, g_response) {
-  if (!g_response) {
-    return { success: false, error: 'g_response is required' };
-  }
-
-  const siteKey = process.env.SITEKEY;
-  
-  // Get existing recaptcha data first
-  const existing = await Recaptcha.findBySiteKey(siteKey);
-  if (!existing) {
-    return { success: false, error: 'Recaptcha not found' };
-  }
-
-  const updateData = {
-    ...existing,
-    g_response: g_response,
-    status_g_response: true,
-    time_g_response: "00:01:40",
-    site: existing.site
-  };
-
-  try {
-    await Recaptcha.updateBySiteKey(siteKey, updateData);
-    
-    // Stop existing timer if any
-    if (timers.has(siteKey)) {
-      timers.get(siteKey).stop();
-    }
-    
-    // Create and start new timer
-    const timer = new RecaptchaTimer(ws, siteKey);
-    timers.set(siteKey, timer);
-    timer.startTimer("00:01:40");
-    
-    return { 
-      type: 'RECAPTCHA',
-      action: 'UPDATE',
-      success: true, 
-      data: updateData 
-    };
-  } catch (err) {
-    console.error('Update error:', err);
-    return { 
-      type: 'RECAPTCHA',
-      action: 'UPDATE',
-      success: false, 
-      error: err.message 
-    };
-  }
-}
-
-
-function cleanupTimers(ws) {
-  for (const [siteKey, timer] of timers.entries()) {
-    if (timer.ws === ws) {
-      timer.stop();
-      timers.delete(siteKey);
-    }
-  }
-}
-
-
 
 exports.getRecaptchaToken = async (ws) => {
   try {
@@ -373,6 +210,125 @@ exports.getRecaptchaToken = async (ws) => {
     handleError(ws, err);
   }
 };
+
+async function updateTokenRecaptcha(ws, g_response) {
+  if (!g_response) {
+    return { success: false, error: 'g_response is required' };
+  }
+
+  const siteKey = process.env.SITEKEY;
+  
+  // Get existing recaptcha data first
+  const existing = await Recaptcha.findBySiteKey(siteKey);
+  if (!existing) {
+    return { success: false, error: 'Recaptcha not found' };
+  }
+
+  const updateData = {
+    ...existing,
+    g_response: g_response,
+    status_g_response: true,
+    time_g_response: "00:01:40",
+    site: existing.site
+  };
+
+  try {
+    await Recaptcha.updateBySiteKey(siteKey, updateData);
+    
+    // Stop existing timer if any
+    if (timers.has(siteKey)) {
+      timers.get(siteKey).stop();
+    }
+    
+    // Create and start new timer
+    const timer = new RecaptchaTimer(ws, siteKey);
+    timers.set(siteKey, timer);
+    timer.startTimer("00:01:40");
+    
+    return { 
+      type: 'RECAPTCHA',
+      action: 'UPDATE',
+      success: true, 
+      data: updateData 
+    };
+  } catch (err) {
+    console.error('Update error:', err);
+    return { 
+      type: 'RECAPTCHA',
+      action: 'UPDATE',
+      success: false, 
+      error: err.message 
+    };
+  }
+}
+
+exports.updateRecaptcha = async (ws, data) => {
+  try {
+    const siteKey = process.env.SITEKEY
+
+
+    // Check if recaptcha exists
+    const existing = await Recaptcha.findBySiteKey(siteKey);
+    if (!existing) {
+      return sendWSResponse(ws, {
+        success: false,
+        error: 'Recaptcha not found'
+      });
+    }
+
+    // Prepare update data
+    const updatedData = {
+      ...existing,
+      ...data,
+      updated_at: new Date()
+    };
+
+    // Remove any undefined or null values
+    Object.keys(updatedData).forEach(key =>
+      (updatedData[key] === undefined || updatedData[key] === null) && delete updatedData[key]
+    );
+
+    await Recaptcha.updateBySiteKey(siteKey, updatedData);
+    const updated = await Recaptcha.findBySiteKey(siteKey);
+
+    sendWSResponse(ws, {
+      success: true,
+      data: updated
+    });
+  } catch (err) {
+    handleError(ws, err);
+  }
+};
+
+exports.deleteRecaptcha = async (ws, siteKey) => {
+  try {
+    if (!siteKey) {
+      return sendWSResponse(ws, {
+        success: false,
+        error: 'Site key is required'
+      });
+    }
+
+    // Check if recaptcha exists
+    const existing = await Recaptcha.findBySiteKey(siteKey);
+    if (!existing) {
+      return sendWSResponse(ws, {
+        success: false,
+        error: 'Recaptcha not found'
+      });
+    }
+
+    await Recaptcha.deleteBySiteKey(siteKey);
+
+    sendWSResponse(ws, {
+      success: true,
+      message: 'Recaptcha deleted successfully'
+    });
+  } catch (err) {
+    handleError(ws, err);
+  }
+};
+
 
 exports.updateTokenRecaptcha = updateTokenRecaptcha;
 exports.cleanupTimers = cleanupTimers;

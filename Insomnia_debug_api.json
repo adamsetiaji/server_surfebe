@@ -1,1 +1,808 @@
-{"_type":"export","__export_format":4,"__export_date":"2025-02-18T12:40:17.479Z","__export_source":"insomnia.desktop.app:v10.3.1","resources":[{"_id":"ws-req_f09278c1cb824465acec9c3f2e091541","parentId":"fld_50c93e7ed2804d97905c2d07edc6f887","modified":1739879930296,"created":1739879875268,"name":"GENERATE OTP","url":"{{ _.ws_url }}","metaSortKey":-1739879875268,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"fld_50c93e7ed2804d97905c2d07edc6f887","parentId":"wrk_scratchpad","modified":1739879870854,"created":1739879870854,"name":"2FA","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1739879870854,"environmentType":"kv","_type":"request_group"},{"_id":"wrk_scratchpad","parentId":null,"modified":1732023097215,"created":1732023097215,"name":"Scratch Pad","description":"","scope":"collection","_type":"workspace"},{"_id":"ws-req_77e06c2e0e664d888736f8dec72f573a","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739877868082,"created":1739876280760,"name":"REGISTER_SURFEBE","url":"{{ _.ws_url }}","metaSortKey":-1739876280760,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"fld_ff26ce7643244361a91f6034a71f465d","parentId":"wrk_scratchpad","modified":1739876214687,"created":1739876214687,"name":"SURFEBE","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1739876214687,"environmentType":"kv","_type":"request_group"},{"_id":"ws-req_6fd6f644aa3243149546eef189c401d7","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739877906832,"created":1739877906832,"name":"LOGIN_SURFEBE","url":"{{ _.ws_url }}","metaSortKey":-1739592342523,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_581c285f5fcc41939219e50df435ab23","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739877917868,"created":1739877917868,"name":"CONFIRM_CAPTCHA","url":"{{ _.ws_url }}","metaSortKey":-1739450373404.5,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_e280f2458b9442e9a9f5d1054d0a0033","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739877935665,"created":1739877935665,"name":"PROFILE_SURFEBE","url":"{{ _.ws_url }}","metaSortKey":-1739379388845.25,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_f1946ed0dc7e416bae0b4f841b002d94","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739877973685,"created":1739877973685,"name":"GET_TASKS","url":"{{ _.ws_url }}","metaSortKey":-1739343896565.625,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_cde702204bdb4c9181b1187dce1fd475","parentId":"fld_ff26ce7643244361a91f6034a71f465d","modified":1739878024939,"created":1739878024939,"name":"COMPLETE_VISIT","url":"{{ _.ws_url }}","metaSortKey":-1739326150425.8125,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_6288c596362b40c48c7d10a667931044","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878178492,"created":1739878100244,"name":"CREATE_RECAPTCHA","url":"{{ _.ws_url }}","metaSortKey":-1739878100244,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"fld_38a8ca4108754432a68fab9ae2b81f15","parentId":"wrk_scratchpad","modified":1739876199622,"created":1739876199622,"name":"RECAPTCHAS","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1739876199622,"environmentType":"kv","_type":"request_group"},{"_id":"ws-req_0f07a1eef840483b9a7509f26ca84319","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878158961,"created":1739878158961,"name":"GET_ALL_RECAPTCHA","url":"{{ _.ws_url }}","metaSortKey":-1739877190502,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_0a78406ff8624d97911d142aa140fd84","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878498265,"created":1739878498265,"name":"Get Token Recaptcha","url":"{{ _.ws_url }}","metaSortKey":-1739876963066.5,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_62bf013278804917a496723d0ed4c8e5","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878231964,"created":1739878231964,"name":"GET_BY_SITE_KEY","url":"{{ _.ws_url }}","metaSortKey":-1739876735631,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_3122afc39dab42a2b06edc1bfce16bf3","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878255145,"created":1739878252877,"name":"UPDATE_RECAPTCHA","url":"{{ _.ws_url }}","metaSortKey":-1739876735531,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_ac2717dd4baf45fb92eebec83de998a5","parentId":"fld_38a8ca4108754432a68fab9ae2b81f15","modified":1739878275947,"created":1739878275947,"name":"DELETE_RECAPTCHA","url":"{{ _.ws_url }}","metaSortKey":-1739876508145.5,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_5211a648234f4abfbbaaffd96b9455b0","parentId":"fld_06b0ab1675e34cc7beb97c4d88c8c399","modified":1739878329623,"created":1739878310204,"name":"Create User","url":"{{ _.ws_url }}","metaSortKey":-1739878310204,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"fld_06b0ab1675e34cc7beb97c4d88c8c399","parentId":"wrk_scratchpad","modified":1739876186634,"created":1739876186634,"name":"USERS","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1739876186634,"environmentType":"kv","_type":"request_group"},{"_id":"ws-req_89d41061c38c40d281954bcd640321f9","parentId":"fld_06b0ab1675e34cc7beb97c4d88c8c399","modified":1739878345031,"created":1739878345031,"name":"Get All Users","url":"{{ _.ws_url }}","metaSortKey":-1739878205224,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_a0ab30a8ef634d739e7f71bb6a3e606e","parentId":"fld_06b0ab1675e34cc7beb97c4d88c8c399","modified":1739878359739,"created":1739878359739,"name":"Get User by Email","url":"{{ _.ws_url }}","metaSortKey":-1739878152734,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_ce58fd712be740cc9ee132bdbf4fe88f","parentId":"fld_06b0ab1675e34cc7beb97c4d88c8c399","modified":1739878374012,"created":1739878374012,"name":"Update User","url":"{{ _.ws_url }}","metaSortKey":-1739878126489,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"ws-req_03a6bc6e37304e1490cd418fe678be63","parentId":"fld_06b0ab1675e34cc7beb97c4d88c8c399","modified":1739878399180,"created":1739878399180,"name":"Delete User","url":"{{ _.ws_url }}","metaSortKey":-1739878113366.5,"headers":[{"name":"User-Agent","value":"insomnia/10.3.1"}],"authentication":{},"parameters":[],"pathParameters":[],"settingEncodeUrl":true,"settingStoreCookies":true,"settingSendCookies":true,"settingFollowRedirects":"global","description":"","_type":"websocket_request"},{"_id":"env_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1739878849861,"created":1732023101015,"name":"Base Environment","data":{"ws_url":"ws://localhost:6969"},"dataPropertyOrder":{"&":["ws_url"]},"color":null,"isPrivate":false,"metaSortKey":1732023101015,"_type":"environment"},{"_id":"jar_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1739881617953,"created":1732023101080,"name":"Default Jar","cookies":[{"key":"PHPSESSID","value":"k374vrp4ubp54jcrroube1pf47","domain":"surfe.be","path":"/","secure":true,"httpOnly":true,"hostOnly":true,"creation":"2025-02-18T12:26:38.843Z","lastAccessed":"2025-02-18T12:26:38.843Z","sameSite":"none","id":"79173640-eee6-49ae-b66a-d77e56b716e3"},{"key":"_identity","value":"28e6afaa8fabe30093dcbccb7dd86a595739786c9f0bbb9e48cef8418ff50be4a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A53%3A%22%5B3014323%2C%227plLTOtV5wXrn5Ycniq0qaGzIqqzgoWm%22%2C31536000%5D%22%3B%7D","expires":"2026-02-18T12:26:57.000Z","maxAge":31536000,"domain":"surfe.be","path":"/","httpOnly":true,"hostOnly":true,"creation":"2025-02-18T12:26:38.844Z","lastAccessed":"2025-02-18T12:26:57.953Z","sameSite":"lax","id":"000837ea-5ca3-4ad9-a693-d6266e564679"}],"_type":"cookie_jar"},{"_id":"ws-payload_7d2b07231aa64c51afbd988b5a41ac2d","parentId":"ws-req_5211a648234f4abfbbaaffd96b9455b0","modified":1739878336064,"created":1739878336064,"name":"New Payload","value":"{\n    \"type\": \"USER\",\n    \"action\": \"CREATE\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\",\n        \"password_surfebe\": \"password123\"\n    }\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_38ddd01b3cc348a7bf767fbcffc85151","parentId":"ws-req_89d41061c38c40d281954bcd640321f9","modified":1739879019294,"created":1739878345034,"name":"New Payload","value":"{\n    \"type\": \"USER\",\n    \"action\": \"GET_ALL\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_5317a206b3f5442ab67c57524eb9888e","parentId":"ws-req_a0ab30a8ef634d739e7f71bb6a3e606e","modified":1739878366276,"created":1739878359740,"name":"New Payload","value":"{\n    \"type\": \"USER\",\n    \"action\": \"GET_BY_EMAIL\",\n    \"email\": \"john@example.com\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_b9f94c316bc84d0c912ddeb6d49c4846","parentId":"ws-req_ce58fd712be740cc9ee132bdbf4fe88f","modified":1739878383073,"created":1739878374015,"name":"New Payload","value":"{\n    \"type\": \"USER\",\n    \"action\": \"UPDATE\",\n    \"email\": \"john@example.com\",\n    \"data\": {\n        \"name\": \"John Updated\",\n        \"password_surfebe\": \"newpassword123\"\n    }\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_06ef3f1cc9d14dceb7756c6ebeb601e7","parentId":"ws-req_03a6bc6e37304e1490cd418fe678be63","modified":1739878424065,"created":1739878399181,"name":"New Payload","value":"{\n    \"type\": \"USER\",\n    \"action\": \"DELETE\",\n    \"email\": \"john@example.com\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_be9d4517cf944bf0a90bc46ff64a6841","parentId":"ws-req_6288c596362b40c48c7d10a667931044","modified":1739878161697,"created":1739878134637,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"CREATE\",\n    \"data\": {\n        \"site\": \"example.com\",\n        \"site_key\": \"6LdAbc123\"\n    }\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_9944b74edcca4c9dbea682c8eae744c6","parentId":"ws-req_0f07a1eef840483b9a7509f26ca84319","modified":1739878247974,"created":1739878158963,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_ALL\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_22e9b7f2c19546acae953a720d36c4f8","parentId":"ws-req_62bf013278804917a496723d0ed4c8e5","modified":1739878238259,"created":1739878231969,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_BY_SITE_KEY\",\n    \"siteKey\": \"6LdAbc123\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_d5a06d722fb04752956661cbdca1ac69","parentId":"ws-req_3122afc39dab42a2b06edc1bfce16bf3","modified":1739878262145,"created":1739878252880,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"UPDATE\",\n    \"siteKey\": \"6LdAbc123\",\n    \"data\": {\n        \"site\": \"newsite.com\",\n        \"g_response\": \"response_token\",\n        \"status_g_response\": 1,\n        \"time_g_response\": \"00:01:30\"\n    }\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_163a00fc97fe4befb7d4bf71661c3e3f","parentId":"ws-req_ac2717dd4baf45fb92eebec83de998a5","modified":1739878281511,"created":1739878275951,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"DELETE\",\n    \"siteKey\": \"6LdAbc123\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_a02d292972c44831878033606593b9b4","parentId":"ws-req_0a78406ff8624d97911d142aa140fd84","modified":1739882163283,"created":1739878498268,"name":"New Payload","value":"{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_TOKEN\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_fe967750edc34725ad894b24b64d080b","parentId":"ws-req_77e06c2e0e664d888736f8dec72f573a","modified":1739882306688,"created":1739877882689,"name":"New Payload","value":"{\n    \"type\": \"SURFEBE\",\n    \"action\": \"REGISTER_SURFEBE\",\n    \"email\": \"john@example.com\",\n\t\"siteKey\": \"6LfMEAwTAAAAAK5MkDsHyDg-SE7wisIDM1-5mDQs\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_783f57ef6e934f26b1c6a403581da689","parentId":"ws-req_6fd6f644aa3243149546eef189c401d7","modified":1739882299618,"created":1739877906836,"name":"New Payload","value":"{\n    \"type\": \"SURFEBE\",\n    \"action\": \"LOGIN_SURFEBE\",\n    \"email\": \"john@example.com\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_51638cb2a0f847d9b1aef190f4733c32","parentId":"ws-req_581c285f5fcc41939219e50df435ab23","modified":1739882343169,"created":1739877917872,"name":"New Payload","value":"{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"CONFIRM_CAPTCHA_SURFEBE\",\n\t\"email\": \"damfinime@gmail.com\",\n\t\"siteKey\": \"6LfMEAwTAAAAAK5MkDsHyDg-SE7wisIDM1-5mDQs\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_87321606070c4cb5971caa54bcedab5c","parentId":"ws-req_e280f2458b9442e9a9f5d1054d0a0033","modified":1739881976139,"created":1739877935670,"name":"New Payload","value":"{\n    \"type\": \"SURFEBE\",\n    \"action\": \"PROFILE_SURFEBE\",\n    \"email\": \"damfinime@gmail.com\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_12098cf5405b404083f9f29213ae16ac","parentId":"ws-req_f1946ed0dc7e416bae0b4f841b002d94","modified":1739882314088,"created":1739877973688,"name":"New Payload","value":"{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"GET_TASKS\",\n\t\"version\": \"182\",\n\t\"email\": \"damfinime@gmail.com\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_7a76a813a6444f9eb7ffdb34690fd8bc","parentId":"ws-req_cde702204bdb4c9181b1187dce1fd475","modified":1739882336280,"created":1739878024943,"name":"New Payload","value":"{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"COMPLETE_VISIT\",\n\t\"version\": \"182\",\n\t\"email\": \"damfinime@gmail.com\",\n\t\"taskKey\": \"MXhleUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpvZEhSd2N6b3ZMM04xY21abExtSmxJaXdpYVdGMElqb3hOek01T0RneU16RTFMQ0prWVhSaElqb2lZVGcxTkRRMk1qb3pNREF6TURBME9qRXhNQzR4TXpZdU1URXVNVGNpTENKbGVIQWlPakUzTXprNE9EVTVNVFY5Lkd2TGFTemJIcXJNWERob0g0U2VpRXcyVkExRl9qdXNTWTRMLTlCX29KRUE=\"\n}","mode":"application/json","_type":"websocket_payload"},{"_id":"ws-payload_d7c5d78cfcf244a897a74afb50c4dfe3","parentId":"ws-req_f09278c1cb824465acec9c3f2e091541","modified":1739879946777,"created":1739879922764,"name":"New Payload","value":"{\n    \"type\": \"OTP\",\n    \"action\": \"GENERATE\",\n    \"email\": \"samantha33110@margodam.biz\"\n}","mode":"application/json","_type":"websocket_payload"}]}
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2025-02-22T20:31:59.670Z",
+    "__export_source": "insomnia.desktop.app:v10.3.1",
+    "resources": [
+        {
+            "_id": "ws-req_9bb05a9ef77b45918adcfb70e1220c49",
+            "parentId": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "modified": 1740247950733,
+            "created": 1739878310204,
+            "name": "Create User",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878310204,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "parentId": "fld_50b3518620934a5d975f693e315993d1",
+            "modified": 1740248888603,
+            "created": 1739876186634,
+            "name": "USERS",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1740247778532,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "fld_50b3518620934a5d975f693e315993d1",
+            "parentId": "wrk_32311ae6a480487ca1f531120a5e49cc",
+            "modified": 1739303120486,
+            "created": 1739303120486,
+            "name": "Backend",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1739303120486,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "wrk_32311ae6a480487ca1f531120a5e49cc",
+            "parentId": null,
+            "modified": 1729962435634,
+            "created": 1729962435634,
+            "name": "Surfe.be",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "ws-req_d932c7cade1a42a68fa99a6e54469ca7",
+            "parentId": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "modified": 1740247953399,
+            "created": 1739878345031,
+            "name": "Get All Users",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878205224,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_a58b9f472098434c832a389656e20a1f",
+            "parentId": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "modified": 1740247956147,
+            "created": 1739878359739,
+            "name": "Get User by Email",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878152734,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_374ef75664214611874148bd1167b4bc",
+            "parentId": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "modified": 1740247958368,
+            "created": 1739878374012,
+            "name": "Update User",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878126489,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_2c9c41db995a4972847f0c9d2572755b",
+            "parentId": "fld_fd45dd570e6d4974bc594c7dc5572c6c",
+            "modified": 1740247960752,
+            "created": 1739878399180,
+            "name": "Delete User",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878113366.5,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_ddb163849d8641039bae161ac4c2a81d",
+            "parentId": "fld_7a841fd024274a1c880557841509bb78",
+            "modified": 1740247921502,
+            "created": 1739879875268,
+            "name": "GENERATE OTP",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739879875268,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "fld_7a841fd024274a1c880557841509bb78",
+            "parentId": "fld_50b3518620934a5d975f693e315993d1",
+            "modified": 1740248890751,
+            "created": 1739879870854,
+            "name": "2FA",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1740247778482,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "ws-req_d4ee5683e3524e4c80cf5887f389b319",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740247929950,
+            "created": 1739878100244,
+            "name": "CREATE_RECAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739878100244,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "parentId": "fld_50b3518620934a5d975f693e315993d1",
+            "modified": 1740248894397,
+            "created": 1739876199622,
+            "name": "RECAPTCHAS",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1740247778457,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "ws-req_5633653f6d7b43669483e10b2388ed08",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740247932351,
+            "created": 1739878158961,
+            "name": "GET_ALL_RECAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739877190502,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_27c8461f442e4b89844361ac2a3d9e7b",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740248951649,
+            "created": 1739878231964,
+            "name": "GET_RECAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739877076784.25,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_6d2fb7e26b8948fb8a9b9472dba85559",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740247934824,
+            "created": 1739878498265,
+            "name": "Get Token Recaptcha",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739876963066.5,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_0f9c914c456e4db2915314e6029ea487",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740247940739,
+            "created": 1739878252877,
+            "name": "UPDATE_RECAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739876735531,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_31d0ffe7be824587bff32909d9671b06",
+            "parentId": "fld_591d6f339a904ff3b9399d789999fbcd",
+            "modified": 1740247945158,
+            "created": 1739878275947,
+            "name": "DELETE_RECAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739876508145.5,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_c6ca812b03e44765aec0f1df06c16cda",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247893192,
+            "created": 1739876280760,
+            "name": "REGISTER_SURFEBE",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739876280760,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "parentId": "fld_50b3518620934a5d975f693e315993d1",
+            "modified": 1740247794923,
+            "created": 1739876214687,
+            "name": "SURFEBE",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1740247778432,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "ws-req_3cc2f828a92648c999254a06bb6dea46",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247904245,
+            "created": 1739877906832,
+            "name": "LOGIN_SURFEBE",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739592342523,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_1fc1aa7e778049bbb836dec0b2cc2155",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247907409,
+            "created": 1739877917868,
+            "name": "CONFIRM_CAPTCHA",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739450373404.5,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_8bb09bebacf54427bd26b0c9434ee21f",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247911359,
+            "created": 1739877935665,
+            "name": "PROFILE_SURFEBE",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739379388845.25,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_d794f31bfc0c44ae8b5c35aacfbfac9e",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247915759,
+            "created": 1739877973685,
+            "name": "GET_TASKS",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739343896565.625,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "ws-req_6b6f2874a668446b86af9078107eea2e",
+            "parentId": "fld_7bbe43fcf99f441093247ad8e8cdbdd2",
+            "modified": 1740247918598,
+            "created": 1739878024939,
+            "name": "COMPLETE_VISIT",
+            "url": "{{ _['ws_url '] }}",
+            "metaSortKey": -1739326150425.8125,
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.1"
+                }
+            ],
+            "authentication": {},
+            "parameters": [],
+            "pathParameters": [],
+            "settingEncodeUrl": true,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingFollowRedirects": "global",
+            "description": "",
+            "_type": "websocket_request"
+        },
+        {
+            "_id": "env_2482f0fa7b1b4c1a0a58f7fd1816d659c09cce02",
+            "parentId": "wrk_32311ae6a480487ca1f531120a5e49cc",
+            "modified": 1740247875486,
+            "created": 1729962435636,
+            "name": "Base Environment",
+            "data": {
+                "ws_url ": "ws://localhost:6969",
+                "email ": "damfinime@gmail.com"
+            },
+            "dataPropertyOrder": {
+                "&": [
+                    "ws_url ",
+                    "email "
+                ]
+            },
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1729962435636,
+            "environmentType": "kv",
+            "kvPairData": [
+                {
+                    "id": "envPair_874c88bea00c4571ac7fb8311ebc83ee",
+                    "name": "ws_url ",
+                    "value": "ws://localhost:6969",
+                    "type": "str",
+                    "enabled": true
+                },
+                {
+                    "id": "envPair_6c20f998e6384a74abcfcab800b80e50",
+                    "name": "email ",
+                    "value": "damfinime@gmail.com",
+                    "type": "str",
+                    "enabled": true
+                }
+            ],
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_2482f0fa7b1b4c1a0a58f7fd1816d659c09cce02",
+            "parentId": "wrk_32311ae6a480487ca1f531120a5e49cc",
+            "modified": 1740123937638,
+            "created": 1729962435638,
+            "name": "Default Jar",
+            "cookies": [
+                {
+                    "key": "HCLBSTICKY",
+                    "value": "9ce47775c7fb01231f727a77f5945b55|ZzpEt|ZzpED",
+                    "domain": "surfe.be",
+                    "path": "/",
+                    "hostOnly": true,
+                    "creation": "2024-10-26T17:59:14.997Z",
+                    "lastAccessed": "2024-11-17T19:32:02.049Z",
+                    "id": "a5b06da8-8efd-4261-a857-a7a359cad897"
+                },
+                {
+                    "key": "PHPSESSID",
+                    "value": "qr195sr15v6fqnq607o7sevg88",
+                    "domain": "surfe.be",
+                    "path": "/",
+                    "secure": true,
+                    "httpOnly": true,
+                    "hostOnly": true,
+                    "creation": "2024-10-27T00:14:35.790Z",
+                    "lastAccessed": "2025-02-21T07:45:37.638Z",
+                    "sameSite": "none",
+                    "id": "b4f0bd6c-12a9-4711-ac5a-f3e23c576b3c"
+                },
+                {
+                    "key": "device_id",
+                    "value": "33049dae839282f44961f4553653b79fee315e5953a4d8985e81f4731d452284a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22device_id%22%3Bi%3A1%3Bs%3A40%3A%223015856%3AWDcurilzHPTUIKWe17JiKzJm_Ngozf7B%22%3B%7D",
+                    "expires": "2025-11-06T16:31:52.000Z",
+                    "maxAge": 31536000,
+                    "domain": "surfe.be",
+                    "path": "/",
+                    "secure": true,
+                    "httpOnly": true,
+                    "hostOnly": true,
+                    "creation": "2024-10-27T00:14:35.792Z",
+                    "lastAccessed": "2024-11-06T16:31:51.496Z",
+                    "sameSite": "lax",
+                    "id": "0e08e271-7a84-4d0d-b00f-11575b5d514f"
+                },
+                {
+                    "key": "_identity",
+                    "value": "aea31bff2294372ea28048be50b36f1b07ffca37a2cc3b66e25d9e4ab731612da%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A53%3A%22%5B3003004%2C%22GGMDPhjBDLG94ChsbXbJpLrnabxU1omX%22%2C31536000%5D%22%3B%7D",
+                    "expires": "2026-02-21T07:45:38.000Z",
+                    "maxAge": 31536000,
+                    "domain": "surfe.be",
+                    "path": "/",
+                    "httpOnly": true,
+                    "hostOnly": true,
+                    "creation": "2024-10-27T00:14:35.793Z",
+                    "lastAccessed": "2025-02-21T07:45:37.638Z",
+                    "sameSite": "lax",
+                    "id": "118d980e-2909-4781-9f22-10832b191f44"
+                },
+                {
+                    "key": "_csrf",
+                    "value": "ee8b061e7e5a6a219a396276689074a78e22375330535d2cda710279f54547a4a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22Aw-lBLDs0c-j8Ii_cuvDhHh0TjjqItvd%22%3B%7D",
+                    "domain": "surfe.be",
+                    "path": "/",
+                    "secure": true,
+                    "httpOnly": true,
+                    "hostOnly": true,
+                    "creation": "2024-11-17T19:31:57.519Z",
+                    "lastAccessed": "2025-02-21T07:45:37.638Z",
+                    "sameSite": "lax",
+                    "id": "7fe7281e-c104-49cf-9818-1e9f62068709"
+                }
+            ],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "ws-payload_84f77f18a9fc46c692885348d8d66255",
+            "parentId": "ws-req_9bb05a9ef77b45918adcfb70e1220c49",
+            "modified": 1739878336064,
+            "created": 1739878336064,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"USER\",\n    \"action\": \"CREATE\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"john@example.com\",\n        \"password_surfebe\": \"password123\"\n    }\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_3d5e211ee7c6477abeb0a6472f6faba7",
+            "parentId": "ws-req_d932c7cade1a42a68fa99a6e54469ca7",
+            "modified": 1740248901282,
+            "created": 1739878345034,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"USER\",\n    \"action\": \"GET_ALL\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_f13db21dabad4160a671897ad1760fd9",
+            "parentId": "ws-req_a58b9f472098434c832a389656e20a1f",
+            "modified": 1740248044419,
+            "created": 1739878359740,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"USER\",\n\t\"action\": \"GET_BY_EMAIL\",\n\t\"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_cc62699dcae24b6781fd0a08e54c74b4",
+            "parentId": "ws-req_374ef75664214611874148bd1167b4bc",
+            "modified": 1740248051156,
+            "created": 1739878374015,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"USER\",\n\t\"action\": \"UPDATE\",\n\t\"email\": \"{{ _['email '] }}\",\n\t\"data\": {\n\t\t\"name\": \"John Updated\",\n\t\t\"password_surfebe\": \"newpassword123\"\n\t}\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_0f00b3071a8f46e1bb5ef59e5a37c840",
+            "parentId": "ws-req_2c9c41db995a4972847f0c9d2572755b",
+            "modified": 1740248059487,
+            "created": 1739878399181,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"USER\",\n\t\"action\": \"DELETE\",\n\t\"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_06a8ed2e289744eba8a3b71d91af6e1f",
+            "parentId": "ws-req_d4ee5683e3524e4c80cf5887f389b319",
+            "modified": 1740248018709,
+            "created": 1739878134637,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"CREATE\",\n    \"data\": {\n        \"site\": \"example.com\",\n        \"site_key\": \"6LdAbc123\"\n    }\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_6d59497a18aa466592ac8cc50659c8cb",
+            "parentId": "ws-req_5633653f6d7b43669483e10b2388ed08",
+            "modified": 1740248942540,
+            "created": 1739878158963,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_ALL\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_2d431399110a4c15bec79d13fdffe19e",
+            "parentId": "ws-req_27c8461f442e4b89844361ac2a3d9e7b",
+            "modified": 1740251136620,
+            "created": 1739878231969,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_RECAPTCHA\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_b63e7ae3c693421185dbac1d86002ee3",
+            "parentId": "ws-req_0f9c914c456e4db2915314e6029ea487",
+            "modified": 1740249385699,
+            "created": 1739878252880,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"UPDATE\",\n    \"data\": {\n        \"g_response\": \"response_token\",\n        \"status_g_response\": 0,\n        \"time_g_response\": \"00:01:40\"\n    }\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_483610b29a5e40f0815a6de3a0c80c4a",
+            "parentId": "ws-req_31d0ffe7be824587bff32909d9671b06",
+            "modified": 1740248032123,
+            "created": 1739878275951,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"DELETE\",\n    \"siteKey\": \"6LdAbc123\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_31795c0277b3427da4a95b534d0813b5",
+            "parentId": "ws-req_6d2fb7e26b8948fb8a9b9472dba85559",
+            "modified": 1740251143611,
+            "created": 1739878498268,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"RECAPTCHA\",\n    \"action\": \"GET_TOKEN\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_f9660060f66e41d6bf28f57ed3c3feef",
+            "parentId": "ws-req_c6ca812b03e44765aec0f1df06c16cda",
+            "modified": 1740247981679,
+            "created": 1739877882689,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"SURFEBE\",\n    \"action\": \"REGISTER_SURFEBE\",\n    \"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_e51bccb77ff045eaaf293e40ff91bf20",
+            "parentId": "ws-req_3cc2f828a92648c999254a06bb6dea46",
+            "modified": 1740247988729,
+            "created": 1739877906836,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"SURFEBE\",\n    \"action\": \"LOGIN_SURFEBE\",\n    \"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_6bb6937e2c0440f5a50ba59577e69624",
+            "parentId": "ws-req_1fc1aa7e778049bbb836dec0b2cc2155",
+            "modified": 1740253577675,
+            "created": 1739877917872,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"CONFIRM_CAPTCHA_SURFEBE\",\n\t\"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_672992c6488b4a5eb915ed814f8938ab",
+            "parentId": "ws-req_8bb09bebacf54427bd26b0c9434ee21f",
+            "modified": 1740251023614,
+            "created": 1739877935670,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"SURFEBE\",\n    \"action\": \"PROFILE_SURFEBE\",\n    \"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_165abc8a2aba47dea247e56cd851e3eb",
+            "parentId": "ws-req_d794f31bfc0c44ae8b5c35aacfbfac9e",
+            "modified": 1740254080266,
+            "created": 1739877973688,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"GET_TASKS\",\n\t\"version\": \"182\",\n\t\"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_712553dd2648465a940793c5c56186c0",
+            "parentId": "ws-req_6b6f2874a668446b86af9078107eea2e",
+            "modified": 1740250892779,
+            "created": 1739878024943,
+            "name": "New Payload",
+            "value": "{\n\t\"type\": \"SURFEBE\",\n\t\"action\": \"COMPLETE_VISIT\",\n\t\"version\": \"182\",\n\t\"email\": \"{{ _['email '] }}\",\n\t\"taskKey\": \"MXhleUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpvZEhSd2N6b3ZMM04xY21abExtSmxJaXdpYVdGMElqb3hOek01T0RneU16RTFMQ0prWVhSaElqb2lZVGcxTkRRMk1qb3pNREF6TURBME9qRXhNQzR4TXpZdU1URXVNVGNpTENKbGVIQWlPakUzTXprNE9EVTVNVFY5Lkd2TGFTemJIcXJNWERob0g0U2VpRXcyVkExRl9qdXNTWTRMLTlCX29KRUE=\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        },
+        {
+            "_id": "ws-payload_c30e81071e004838b98330bfdca15407",
+            "parentId": "ws-req_ddb163849d8641039bae161ac4c2a81d",
+            "modified": 1740248912502,
+            "created": 1739879922764,
+            "name": "New Payload",
+            "value": "{\n    \"type\": \"OTP\",\n    \"action\": \"GENERATE\",\n    \"email\": \"{{ _['email '] }}\"\n}",
+            "mode": "application/json",
+            "_type": "websocket_payload"
+        }
+    ]
+}

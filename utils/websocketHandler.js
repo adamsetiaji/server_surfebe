@@ -41,14 +41,14 @@ const websocketHandler = (ws) => {
             case 'GET_ALL':
               await recaptchaController.getAllRecaptchas(ws);
               break;
+              case 'GET_RECAPTCHA':
+              await recaptchaController.getRecaptcha(ws);
+              break;
             case 'GET_TOKEN':
               await recaptchaController.getRecaptchaToken(ws);
               break;
-            case 'GET_BY_SITE_KEY':
-              await recaptchaController.getRecaptchaBySiteKey(ws, siteKey);
-              break;
             case 'UPDATE':
-              await recaptchaController.updateRecaptcha(ws, siteKey, data);
+              await recaptchaController.updateRecaptcha(ws, data);
               break;
             case 'DELETE':
               await recaptchaController.deleteRecaptcha(ws, siteKey);
@@ -74,14 +74,14 @@ const websocketHandler = (ws) => {
         case 'SURFEBE':
           switch (action) {
             case 'REGISTER_SURFEBE':
-              await surfebeController.registerSurfebe(ws, email, siteKey);
+              await surfebeController.registerSurfebe(ws, email);
               break;
             case 'LOGIN_SURFEBE':
-              await surfebeController.loginSurfebe(ws, email, siteKey);
+              await surfebeController.loginSurfebe(ws, email);
               break;
 
             case 'CONFIRM_CAPTCHA_SURFEBE':
-              await surfebeController.confirmCaptchaSurfebe(ws, email, siteKey);
+              await surfebeController.confirmCaptchaSurfebe(ws, email);
               break;
 
             case 'PROFILE_SURFEBE':

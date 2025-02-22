@@ -2,7 +2,7 @@
 const userController = require('./userController');
 const recaptchaController = require('./recaptchaController');
 
-
+// const siteKey = process.env.SITEKEY
 const { JSDOM } = require('jsdom');
 
 const sendWSResponse = (ws, data) => {
@@ -31,7 +31,8 @@ function parseVisits(htmlContent) {
     return visits;
 }
 
-exports.registerSurfebe = async (ws, email, siteKey) => {
+
+exports.registerSurfebe = async (ws, email) => {
     try {
         // Get user data
         const userData = await userController.findUserByEmail(email);
@@ -43,7 +44,7 @@ exports.registerSurfebe = async (ws, email, siteKey) => {
         }
 
         // Get recaptcha g_response
-        const recaptchaResponse = await recaptchaController.getRecaptchaBySiteKey(siteKey);
+        const recaptchaResponse = await recaptchaController.getRecaptcha(ws);
         if (!recaptchaResponse.success) {
             return sendWSResponse(ws, recaptchaResponse);
         }
@@ -84,7 +85,8 @@ exports.registerSurfebe = async (ws, email, siteKey) => {
     }
 };
 
-exports.loginSurfebe = async (ws, email, siteKey) => {
+
+exports.loginSurfebe = async (ws, email) => {
     try {
         // Get user data
         const userData = await userController.findUserByEmail(email);
@@ -96,7 +98,7 @@ exports.loginSurfebe = async (ws, email, siteKey) => {
         }
 
         // Get recaptcha g_response
-        const recaptchaResponse = await recaptchaController.getRecaptchaBySiteKey(siteKey);
+        const recaptchaResponse = await recaptchaController.getRecaptcha(ws);
         if (!recaptchaResponse.success) {
             return sendWSResponse(ws, recaptchaResponse);
         }
@@ -137,7 +139,7 @@ exports.loginSurfebe = async (ws, email, siteKey) => {
 };
 
 
-exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
+exports.confirmCaptchaSurfebe = async (ws, email) => {
     try {
         // Get user data
         const userData = await userController.findUserByEmail(email);
@@ -149,7 +151,7 @@ exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
         }
 
         // Get recaptcha g_response
-        const recaptchaData = await recaptchaController.getRecaptchaBySiteKey(siteKey);
+        const recaptchaData = await recaptchaController.getRecaptcha(ws);
         if (!recaptchaData || !recaptchaData.success) {
             return sendWSResponse(ws, {
                 success: false,
@@ -191,6 +193,7 @@ exports.confirmCaptchaSurfebe = async (ws, email, siteKey) => {
         });
     }
 };
+
 
 exports.getProfileSurfebe = async (ws, email) => {
     try {
@@ -307,7 +310,6 @@ exports.getTasks = async (ws, version, email) => {
         });
     }
 };
-
 
 
 exports.completeVisit = async (ws, version, key, email) => {

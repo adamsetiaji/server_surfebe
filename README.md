@@ -189,12 +189,11 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 }
 ```
 
-#### Get Recaptcha by Site Key
+#### Get Recaptcha
 ```json
 {
     "type": "RECAPTCHA",
-    "action": "GET_BY_SITE_KEY",
-    "siteKey": "6LdAbc123"
+    "action": "GET_RECAPTCHA"
 }
 ```
 
@@ -231,8 +230,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 {
     "type": "SURFEBE",
     "action": "REGISTER_SURFEBE",
-    "email": "john@example.com",
-    "siteKey": "6LdAbc123"
+    "email": "john@example.com"
 }
 ```
 
@@ -241,8 +239,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 {
     "type": "SURFEBE",
     "action": "LOGIN_SURFEBE",
-    "email": "john@example.com",
-    "siteKey": "6LdAbc123"
+    "email": "john@example.com"
 }
 ```
 
@@ -250,9 +247,8 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 ```json
 {
     "type": "SURFEBE",
-    "action": "CONFIRM_CAPTCHA",
-    "email": "john@example.com",
-    "siteKey": "6LdAbc123"
+    "action": "CONFIRM_CAPTCHA_SURFEBE",
+    "email": "john@example.com"
 }
 ```
 

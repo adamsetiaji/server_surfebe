@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
   recaptchaController.getAllRecaptchas(res);
 });
 
-router.get('/:siteKey', (req, res) => {
-  recaptchaController.getRecaptchaBySiteKey(res, req.params.siteKey);
+router.get('/', (req, res) => {
+  recaptchaController.getRecaptcha(res);
 });
 
-router.put('/:siteKey', (req, res) => {
-  recaptchaController.updateRecaptcha(res, req.params.siteKey, req.body);
+router.put('/', (req, res) => {
+  recaptchaController.updateRecaptcha(res, req.body);
 });
 
 router.delete('/:siteKey', (req, res) => {
