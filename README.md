@@ -42,7 +42,7 @@ Node.js WebSocket server for the Surfebe application with a MySQL database.
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/adamsetiaji/server_surfebe.git
-   cd surfebeserver
+   cd server_surfebe
    ```
 
 2. **Install dependencies:**
